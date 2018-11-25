@@ -1,0 +1,20 @@
+language: python
+
+matrix:
+  include:
+    - python: 3.5
+    - python: 3.6
+    - python: 3.7
+      dist: xenial
+      sudo: true
+
+install:
+  - pip3 install -r requirements-dev.txt
+
+script:
+  - flake8 switch_case --ignore=E731 --max-line-length 99
+  - mypy switch_case
+  - coverage run --source=switch_case -m unittest tests
+
+after_success:
+  - codecov
