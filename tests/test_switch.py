@@ -1,6 +1,5 @@
 import unittest
 from unittest.mock import MagicMock, sentinel, call
-from typing import Callable
 
 from switch_case import Switch, Case, switch as inst
 
