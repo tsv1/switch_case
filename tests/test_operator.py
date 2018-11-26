@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import sentinel
+from unittest.mock import MagicMock, sentinel
 from typing import Callable
 
 from switch_case import Operator, _ as inst
@@ -51,6 +51,13 @@ class TestOperator(unittest.TestCase):
         self.assertTrue(predicate(1))
         self.assertTrue(predicate(0))
         self.assertFalse(predicate(-1))
+
+    def test_curry(self):
+        mock = MagicMock(return_value=sentinel.res)
+        curried = Operator()(mock, sentinel.arg1, key1=sentinel.kwarg1)
+
+        self.assertEqual(curried(sentinel.arg2, key1=sentinel.kwarg2), sentinel.res)
+        mock.assert_called_once_with(sentinel.arg2, sentinel.arg1, key1=sentinel.kwarg2)
 
     def test_alias(self):
         self.assertIsInstance(inst, Operator)
