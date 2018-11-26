@@ -7,7 +7,7 @@ setup(
     version=switch_case.__version__,
     author="Nikita Tsvetkov",
     author_email="nikitanovosibirsk@yandex.com",
-    description="",
+    description="Switch-case statement for Python",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/nikitanovosibirsk/switch_case",
