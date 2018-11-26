@@ -77,20 +77,29 @@ class TestSwitch(unittest.TestCase):
         self.assertEqual(switch(), sentinel.smth)
         truthy.assert_called_once_with(sentinel.expr)
 
+    def test_switch_with_2_expr(self):
+        switch = Switch()(sentinel.expr1) | Case(lambda x: True) >> sentinel.smth
+        with self.assertRaises(ValueError):
+            switch(sentinel.expr2)
+
     def test_switch_without_expr(self):
         switch = Switch([Case(lambda x: True) >> sentinel.smth])
         with self.assertRaises(ValueError):
             switch()
 
     def test_switch_without_cases(self):
-        switch = Switch([], sentinel.expr)
+        switch = Switch(cases=[], expr=sentinel.expr)
         with self.assertRaises(ValueError):
             switch()
 
+    def test_switch_resolve(self):
+        truthy = MagicMock(return_value=True)
+        switch = inst(sentinel.expr) | Case(truthy) >> sentinel.smth
+        self.assertEqual(~switch, sentinel.smth)
+        truthy.assert_called_once_with(sentinel.expr)
+
     def test_alias(self):
         self.assertIsInstance(inst, Switch)
-        with self.assertRaises(ValueError):
-            inst(sentinel.any)()
 
     def test_immutable(self):
         switch1 = inst | Case(lambda x: True) >> sentinel.exact1
@@ -98,3 +107,15 @@ class TestSwitch(unittest.TestCase):
 
         self.assertEqual(switch1(sentinel.any), sentinel.exact1)
         self.assertEqual(switch2(sentinel.any), sentinel.exact2)
+
+    def test_immutable_expr(self):
+        truthy1 = MagicMock(return_value=True)
+        truthy2 = MagicMock(return_value=True)
+        switch1 = inst(sentinel.expr1) | Case(truthy1) >> sentinel.exact1
+        switch2 = inst(sentinel.expr2) | Case(truthy2) >> sentinel.exact2
+
+        self.assertEqual(switch1(), sentinel.exact1)
+        truthy1.assert_called_once_with(sentinel.expr1)
+
+        self.assertEqual(switch2(), sentinel.exact2)
+        truthy2.assert_called_once_with(sentinel.expr2)

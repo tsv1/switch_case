@@ -15,6 +15,8 @@ class Switch:
     def __call__(self, expr: Any = Nil) -> Any:
         if (expr is Nil) and (len(self._cases) == 0 or self._expr is Nil):
             raise ValueError("Too few arguments")
+        if (expr is not Nil) and (self._expr is not Nil):
+            raise ValueError("Too many arguments")
 
         if len(self._cases) == 0 and (expr is not Nil):
             return Switch(expr=expr)
@@ -26,3 +28,6 @@ class Switch:
                 return case.resolve()
 
         raise ValueError(expr)
+
+    def __invert__(self):
+        return self()

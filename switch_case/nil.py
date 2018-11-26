@@ -1,1 +1,2 @@
-class Nil: pass
+class Nil:
+    pass
