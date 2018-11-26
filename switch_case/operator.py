@@ -2,6 +2,7 @@ import operator
 from typing import Any, Callable
 
 from .curry import curry
+from .infix import Infix
 
 
 class Operator:
@@ -25,3 +26,6 @@ class Operator:
 
     def __call__(self, fn: Callable, *args: Any, **kwargs: Any) -> Callable:
         return curry(fn, *args, **kwargs)
+
+    def __truediv__(self, other: Any) -> Infix:
+        return Infix(other)

@@ -59,6 +59,14 @@ class TestOperator(unittest.TestCase):
         self.assertEqual(curried(sentinel.arg2, key1=sentinel.kwarg2), sentinel.res)
         mock.assert_called_once_with(sentinel.arg2, sentinel.arg1, key1=sentinel.kwarg2)
 
+    def test_infix(self):
+        mock = MagicMock(return_value=sentinel.res)
+        predicate = Operator() /mock/ sentinel.arg1
+
+        self.assertIsInstance(predicate, Callable)
+        self.assertEqual(predicate(sentinel.arg2), sentinel.res)
+        mock.assert_called_once_with(sentinel.arg2, sentinel.arg1)
+
     def test_alias(self):
         self.assertIsInstance(inst, Operator)
 
