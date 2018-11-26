@@ -9,8 +9,8 @@ class Case:
         self._value = value
         return self
 
-    def match(self, smth: Any) -> bool:
-        return self._predicate(smth)
+    def match(self, expr: Any) -> bool:
+        return self._predicate(expr)
 
     def resolve(self) -> Any:
         if not hasattr(self, "_value"):
