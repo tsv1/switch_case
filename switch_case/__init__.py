@@ -4,7 +4,7 @@ from .operator import Operator
 
 
 __all__ = ("switch", "case", "default", "_")
-__version__ = "1.1"
+__version__ = "1.2"
 
 switch = Switch()
 case = lambda x: Case(x)
