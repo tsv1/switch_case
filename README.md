@@ -28,3 +28,48 @@ assert reason(200) == 'OK'
 assert reason(500) == 'ERROR'
 assert reason(400) == 'UNKNOWN'
 ```
+
+Which is syntax sugar for:
+
+```python
+from switch_case import *
+from operator import eq
+reason = (
+    switch
+        | case(_ /eq/ 200) >> 'OK'
+        | case(_ /eq/ 500) >> 'ERROR'
+        | default        >> 'UNKNOWN')
+```
+
+So you can use it like this:
+
+```python
+from switch_case import *
+get_type = (
+    switch
+        | case(_ /isinstance/ str)   >> "string"
+        | case(_ /isinstance/ int)   >> "integer"
+        | case(_ /isinstance/ float) >> "float"
+        | case(_ /isinstance/ bool)  >> "bool"
+        | default                    >> "other")
+```
+
+Or as a function:
+
+```python
+from switch_case import *
+def get_type(smth):
+    return ~(
+        switch(smth)
+            | case(_ /isinstance/ str)   >> "string"
+            | case(_ /isinstance/ int)   >> "integer"
+            | case(_ /isinstance/ float) >> "float"
+            | case(_ /isinstance/ bool)  >> "bool"
+            | default                    >> "other")
+```
+
+```python
+assert get_type(42) == "integer"
+assert get_type("42") == "string"
+assert get_type(3.14) == "float"
+```
