@@ -1,10 +1,8 @@
-from setuptools import setup, find_packages
-import switch_case
-
+from setuptools import find_packages, setup
 
 setup(
     name="switch_case",
-    version=switch_case.__version__,
+    version="1.4",
     author="Nikita Tsvetkov",
     author_email="nikitanovosibirsk@yandex.com",
     description="Switch-case statement for Python",
@@ -18,6 +16,7 @@ setup(
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
     ],
