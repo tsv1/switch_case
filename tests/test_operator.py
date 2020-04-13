@@ -1,8 +1,9 @@
 import unittest
-from unittest.mock import MagicMock, sentinel
 from typing import Callable
+from unittest.mock import MagicMock, sentinel
 
-from switch_case import Operator, _ as inst
+from switch_case import Operator
+from switch_case import _ as inst
 
 
 class TestOperator(unittest.TestCase):

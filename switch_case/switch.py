@@ -29,5 +29,5 @@ class Switch:
 
         raise ValueError(expr)
 
-    def __invert__(self):
+    def __invert__(self) -> Any:
         return self()

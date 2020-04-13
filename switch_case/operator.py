@@ -12,19 +12,19 @@ class Operator:
     def __ne__(self, other: Any) -> Callable[[Any], bool]:  # type: ignore
         return curry(operator.ne, other)
 
-    def __lt__(self, other: Any) -> Callable[[Any], bool]:  # type: ignore
+    def __lt__(self, other: Any) -> Callable[[Any], bool]:
         return curry(operator.lt, other)
 
-    def __le__(self, other: Any) -> Callable[[Any], bool]:  # type: ignore
+    def __le__(self, other: Any) -> Callable[[Any], bool]:
         return curry(operator.le, other)
 
-    def __gt__(self, other: Any) -> Callable[[Any], bool]:  # type: ignore
+    def __gt__(self, other: Any) -> Callable[[Any], bool]:
         return curry(operator.gt, other)
 
-    def __ge__(self, other: Any) -> Callable[[Any], bool]:  # type: ignore
+    def __ge__(self, other: Any) -> Callable[[Any], bool]:
         return curry(operator.ge, other)
 
-    def __call__(self, fn: Callable, *args: Any, **kwargs: Any) -> Callable:
+    def __call__(self, fn: Callable[..., Any], *args: Any, **kwargs: Any) -> Callable[..., Any]:
         return curry(fn, *args, **kwargs)
 
     def __truediv__(self, other: Any) -> Infix:
