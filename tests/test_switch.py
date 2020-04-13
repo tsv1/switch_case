@@ -1,7 +1,8 @@
 import unittest
-from unittest.mock import MagicMock, sentinel, call
+from unittest.mock import MagicMock, call, sentinel
 
-from switch_case import Switch, Case, switch as inst
+from switch_case import Case, Switch
+from switch_case import switch as inst
 
 
 class TestSwitch(unittest.TestCase):

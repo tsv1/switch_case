@@ -1,4 +1,7 @@
-coverage==4.5.2
-codecov==2.0.15
-flake8==3.6.0
-mypy==0.641
+codecov==2.0.22
+coverage==5.1
+flake8==3.7.9
+isort==4.3.21
+mypy==0.770
+pytest==5.4.1
+pytest-cov==2.8.1

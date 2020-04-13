@@ -1,7 +1,6 @@
 import unittest
-from functools import partial
 
-from switch_case import switch, case, default, _
+from switch_case import _, case, default, switch
 
 
 class TestSwitchCase(unittest.TestCase):

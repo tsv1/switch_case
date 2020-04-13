@@ -4,8 +4,8 @@ from .curry import curry
 
 
 class Infix:
-    def __init__(self, fn) -> None:
+    def __init__(self, fn: Callable[..., Any]) -> None:
         self._fn = fn
 
-    def __truediv__(self, arg: Any) -> Callable:
+    def __truediv__(self, arg: Any) -> Callable[..., Any]:
         return curry(self._fn, arg)

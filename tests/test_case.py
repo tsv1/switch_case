@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import MagicMock, sentinel
-from typing import Callable
 
-from switch_case import Case, case as case_factory
+from switch_case import Case
+from switch_case import case as case_factory
 
 
 class TestCase(unittest.TestCase):
