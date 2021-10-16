@@ -3,7 +3,7 @@ from .operator import Operator
 from .switch import Switch
 
 __all__ = ("switch", "case", "default", "_")
-__version__ = "1.4"
+__version__ = "1.5"
 
 switch = Switch()
 case = lambda x: Case(x)  # noqa: E731
