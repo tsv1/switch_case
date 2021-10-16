@@ -29,7 +29,7 @@ check-types:
 
 .PHONY: check-imports
 check-imports:
-	python3 -m isort ${PROJECT_NAME} tests --recursive --check-only
+	python3 -m isort ${PROJECT_NAME} tests --check-only
 
 .PHONY: check-style
 check-style:

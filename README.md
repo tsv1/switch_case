@@ -5,6 +5,8 @@
 [![PyPI](https://img.shields.io/pypi/v/switch_case.svg)](https://pypi.python.org/pypi/switch_case/)
 [![Python Version](https://img.shields.io/pypi/pyversions/switch_case.svg)](https://pypi.python.org/pypi/switch_case/)
 
+In Python 3.10 you can use [Structural Pattern Matching](https://www.python.org/dev/peps/pep-0636/)
+
 ## Installation
 
 ```bash
